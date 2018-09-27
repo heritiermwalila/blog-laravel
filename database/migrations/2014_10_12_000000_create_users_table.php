@@ -29,15 +29,7 @@ class CreateUsersTable extends Migration
         }
 
         
-        if (!Schema::hasColumn('users', 'photo_id')) {
-            //
-            
-            Schema::table('users', function($table) {
-                //
-                $table->integer('photo_id')->default(0);
-            });
-            
-        }
+       
         
         
         

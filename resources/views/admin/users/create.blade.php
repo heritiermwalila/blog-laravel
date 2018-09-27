@@ -52,8 +52,8 @@
                         </div> 
                     </div>
                     <div class="form-group">
-                            {!!Form::label('profile-image', 'Profile Image')!!}
-                            {!!Form::file('profile', null, ['class'=>'form-control'])!!}
+                            {!!Form::label('file', 'Profile Image')!!}
+                            {!!Form::file('file', null, ['class'=>'form-control'])!!}
                         </div>
                     
                     {!!Form::submit('Update info', ['class'=>'btn btn-primary'])!!}
