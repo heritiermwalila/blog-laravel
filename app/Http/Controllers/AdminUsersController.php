@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\UsersRequest;
+use App\Http\Requests\UpdateUserAccount;
 use App\User;
 use App\Role;
 use App\Photo;
@@ -103,11 +104,25 @@ class AdminUsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateUserAccount $request, $id)
     {
         //
 
-        
+        $user = User::find($id);
+
+        $input = $request->all();
+
+        if($file = $request->file('photo_id')){
+
+            $name = time() . $file->getClientOriginalName();
+
+            $file->move('images', $name);
+        }
+
+        $input['password'] = bcrypt($request['password']);
+
+        return $request->all();
+        //return redirect()->route('users.show');
         
     }
 

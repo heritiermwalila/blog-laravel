@@ -12,6 +12,7 @@
             <div class="panel panel-primary">
                 <div class="panel-heading">Edit profile info</div>
                 <div class="panel-body">
+                    @include('inc.message')
                     {!! Form::model($user, ['route'=>['users.update', $user->id], 'method'=>'PATCH'])!!}
                     <div class="form-group">
                         {!!Form::label('name', 'Fullname')!!}
