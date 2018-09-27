@@ -24,12 +24,30 @@ Route::group(['middleware' => 'web'], function() {
     
     });
 
-    Route::resource('/admin/users', 'AdminUsersController');
+    
 
-    Auth::routes();
-
-    Route::get('/home', 'HomeController@index')->name('home');
+    
     
 });
+
+Auth::routes();
+
+Route::group(['middleware' => 'auth'], function() {
+    //
+    Route::resource('/admin/users', 'AdminUsersController');
+    Route::get('/admin', function(){
+
+        if(Auth::check()){
+
+            return view('admin.index');
+        }
+        return redirect('/admin');
+    });
+
+    
+
+    Route::get('/home', 'HomeController@index')->name('home');
+});
+
 
 
