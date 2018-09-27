@@ -13,7 +13,8 @@
                 <div class="col-md-4">
                     <div class="panel panel-default">
                         <div class="panel-body">
-                            <img src="https://via.placeholder.com/200x200" alt="">
+                            <img src="{{$user->photo ? $user->photo->file : 'https://via.placeholder.com/200x200'}}" alt="" height="200">
+                            
                         </div>
                         <div class="panel-footer text-center">{{$user->name}}<br />
                         <span class="label label-{{$user->is_active != 1 ? 'danger' : 'success'}} text-center">{{$user->is_active != 1 ? 'Inactive' : 'Active'}}</span>

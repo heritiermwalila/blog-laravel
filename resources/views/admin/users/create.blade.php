@@ -13,7 +13,7 @@
                 <div class="panel-heading">Edit profile info</div>
                 <div class="panel-body">
                     @include('inc.message')
-                    {!! Form::open(['action'=>'AdminUsersController@store', 'method'=>'POST'])!!}
+                    {!! Form::open(['action'=>'AdminUsersController@store', 'method'=>'POST', 'files'=>true])!!}
                     <div class="form-group">
                         {!!Form::label('name', 'Fullname')!!}
                         {!!Form::text('name', null, ['class'=>'form-control'])!!}
@@ -52,8 +52,8 @@
                         </div> 
                     </div>
                     <div class="form-group">
-                            {!!Form::label('file', 'Profile Image')!!}
-                            {!!Form::file('file', null, ['class'=>'form-control'])!!}
+                            {!!Form::label('photo-id', 'Profile Image')!!}
+                            {!!Form::file('photo_id', null, ['class'=>'form-control'])!!}
                         </div>
                     
                     {!!Form::submit('Update info', ['class'=>'btn btn-primary'])!!}

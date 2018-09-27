@@ -12,7 +12,7 @@
             <div class="panel panel-primary">
                 <div class="panel-heading">Edit profile info</div>
                 <div class="panel-body">
-                    {!! Form::open(['route'=>['users.update', $user->id], 'method'=>'PUT'])!!}
+                    {!! Form::model($user, ['route'=>['users.update', $user->id], 'method'=>'PATCH'])!!}
                     <div class="form-group">
                         {!!Form::label('name', 'Fullname')!!}
                         {!!Form::text('name', $user->name, ['class'=>'form-control'])!!}
@@ -29,7 +29,7 @@
                     <div class="form-group">
                         
                         {!!Form::label('status', 'Account status')!!}
-                        {!!Form::select('is_active', [0=>'Inactive', 1=>'Active'], 0, ['class'=>'form-control'])!!}
+                        {!!Form::select('is_active', [0=>'Inactive', 1=>'Active'], null, ['class'=>'form-control'])!!}
                     </div>
                     <div class="form-group">
                         <div class="row">
@@ -53,6 +53,7 @@
                         {!!Form::file('profile', null, ['class'=>'form-control'])!!}
                     </div>
                     {!!Form::submit('Update info', ['class'=>'btn btn-primary'])!!}
+                    <a href="{{route('users.show', $user->id)}}" class="btn btn-info">Cancel</a>
                     {!! Form::close()!!}
                 </div>
             </div>
