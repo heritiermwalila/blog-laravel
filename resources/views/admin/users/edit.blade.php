@@ -13,7 +13,7 @@
                 <div class="panel-heading">Edit profile info</div>
                 <div class="panel-body">
                     @include('inc.message')
-                    {!! Form::model($user, ['route'=>['users.update', $user->id], 'method'=>'PATCH'])!!}
+                    {!! Form::model($user, ['route'=>['users.update', $user->id], 'method'=>'PATCH', 'files'=>true])!!}
                     <div class="form-group">
                         {!!Form::label('name', 'Fullname')!!}
                         {!!Form::text('name', $user->name, ['class'=>'form-control'])!!}
@@ -51,7 +51,7 @@
                     </div>
                     <div class="form-group">
                         {!!Form::label('profile-image', 'Profile Image')!!}
-                        {!!Form::file('profile', null, ['class'=>'form-control'])!!}
+                        {!!Form::file('photo_id', null, ['class'=>'form-control'])!!}
                     </div>
                     {!!Form::submit('Update info', ['class'=>'btn btn-primary'])!!}
                     <a href="{{route('users.show', $user->id)}}" class="btn btn-info">Cancel</a>

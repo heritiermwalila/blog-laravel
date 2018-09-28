@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\UsersRequest;
 use App\Http\Requests\UpdateUserAccount;
+use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Role;
 use App\Photo;
@@ -19,8 +20,11 @@ class AdminUsersController extends Controller
     public function index()
     {
         //
-
+        
         $users = User::all();
+        // if(Auth::user()->role->name !='administrator'){
+        //     return view('admin.users.profile');
+        // }
 
         return view('admin.users.index')->with('users', $users);
     }
@@ -65,7 +69,7 @@ class AdminUsersController extends Controller
 
         
 
-        return view('admin.users.index');
+        return redirect()->route('admin.users.index');
     }
 
     /**
@@ -117,12 +121,19 @@ class AdminUsersController extends Controller
             $name = time() . $file->getClientOriginalName();
 
             $file->move('images', $name);
+            $photo = Photo::create(['file'=>$name]);
+            $input['photo_id'] = $photo->id;
         }
 
+        
         $input['password'] = bcrypt($request['password']);
 
-        return $request->all();
-        //return redirect()->route('users.show');
+        return $input;
+
+       // $user->update($input);
+
+        //return redirect()->route('users.show', $id);
+        
         
     }
 
