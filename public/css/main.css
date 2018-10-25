@@ -1,3 +1,7 @@
+*{
+    font-family:Helvetica, sans-serif, Arial
+     
+}
 ul.menu{
     list-style: none;
     line-height: 2.7;
@@ -6,4 +10,9 @@ ul.menu{
 .menu li a{
     color: #333;
     text-decoration: none;
+    font-family:helvetica;
+}
+
+.user-page h2{
+    margin-top: 0 !important;
 }

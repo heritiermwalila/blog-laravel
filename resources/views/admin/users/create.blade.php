@@ -10,7 +10,7 @@
         </div>
         <div class="col-md-8">
             <div class="panel panel-primary">
-                <div class="panel-heading">Edit profile info</div>
+                <div class="panel-heading">Create User Account</div>
                 <div class="panel-body">
                     @include('inc.message')
                     {!! Form::open(['action'=>'AdminUsersController@store', 'method'=>'POST', 'files'=>true])!!}
@@ -56,7 +56,7 @@
                             {!!Form::file('photo_id', null, ['class'=>'form-control'])!!}
                         </div>
                     
-                    {!!Form::submit('Update info', ['class'=>'btn btn-primary'])!!}
+                    {!!Form::submit('Submit', ['class'=>'btn btn-primary'])!!}
                     {!! Form::close()!!}
                 </div>
             </div>

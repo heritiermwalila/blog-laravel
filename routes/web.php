@@ -13,16 +13,16 @@
 
 
 
+Route::get('/', function () {
+    return view('welcome');
 
+});
 
 
 Route::group(['middleware' => 'web'], function() {
     //
 
-    Route::get('/', function () {
-        return view('welcome');
-    
-    });
+  
 
     
 
@@ -36,18 +36,22 @@ Route::group(['middleware' => 'admin'], function() {
     //
     Route::resource('/admin/users', 'AdminUsersController');
     Route::get('/admin', function(){
-
-        if(Auth::check()){
-
-            return view('admin.index');
-        }
-        return redirect('/admin');
+        return view('admin.index');
     });
-
     
+       
 
     Route::get('/home', 'HomeController@index')->name('home');
 });
+
+
+Route::group(['middleware' => 'auth'], function() {
+    Route::resource('/admin/users', 'AdminUsersController');
+
+    Route::get('/home', 'HomeController@index')->name('home');
+    //
+});
+
 
 
 

@@ -11,8 +11,14 @@
 
         @if (Auth::user()->role_id == 1)
             <div class="col-md-8">
-                    <a href="{{route('users.create')}}" class="btn btn-default">Add new user</a>
-                    <h2>Users</h2>
+                <div class="row">
+                    <div class="col-md-3 user-page">
+                        <h2>Users</h2>
+                    </div>
+                    <div class="col-md-3">
+                        <a href="{{route('users.create')}}" class="btn btn-default pull-left">Add new user</a>
+                    </div>
+                </div>
 
                 <ul class="list-group">
                     
@@ -23,7 +29,7 @@
 
                                 <li class="list-group-item">
                                     <a class="btn btn-default" href="{{route('users.show', $user->id)}}"><i class="fa fa-edit"></i></a>
-                                    <a class="btn btn-default"><i class="fa fa-trash"></i></a>
+                                    <a class="btn btn-default" href="{{route('users.destroy', $user->id)}}"><i class="fa fa-trash"></i></a>
                                     
                                     <span class="badge">14</span>
                                     <span>{{$user->name}}</span> | <span class="label label-primary">{{$user->role->name}}</span> 

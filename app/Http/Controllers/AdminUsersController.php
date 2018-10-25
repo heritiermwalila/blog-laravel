@@ -84,6 +84,10 @@ class AdminUsersController extends Controller
 
         $user = User::find($id);
 
+        if(!$user){
+            return redirect()->back();
+        }
+
         return view('admin.users.show', compact('user'));
     }
 
@@ -128,11 +132,11 @@ class AdminUsersController extends Controller
         
         $input['password'] = bcrypt($request['password']);
 
-        return $input;
+        
 
-       // $user->update($input);
+       $user->update($input);
 
-        //return redirect()->route('users.show', $id);
+        return redirect()->route('users.show', $id);
         
         
     }
@@ -146,6 +150,16 @@ class AdminUsersController extends Controller
     public function destroy($id)
     {
         //
+        $user = User::find($id);
+
+
+        if($user->role->name === 'administrator'){
+            return false;
+        }
+
+        $user->delete();
+
+        return redirect()->back();
     }
 
    

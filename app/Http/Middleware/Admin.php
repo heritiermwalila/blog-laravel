@@ -2,6 +2,8 @@
 
 namespace App\Http\Middleware;
 
+use Illuminate\Support\Facades\Auth;
+
 use Closure;
 
 class Admin
@@ -20,6 +22,6 @@ class Admin
                 return $next($request);
             }
         }
-        return false;
+        return redirect('404');
     }
 }
